@@ -2,6 +2,7 @@
 const fs = require('fs').promises;
 const axios = require('axios');
 const path = require('path');
+const token = process.env.AUTHORIZATION_TOKEN;
 
 async function processAndUploadFiles() {
   const directoryPath = path.join(__dirname); // Anpassen, falls das Skript in einem Unterordner liegt
@@ -17,7 +18,7 @@ async function processAndUploadFiles() {
     );
 
     await axios.put('https://api.schickl.app/oeh.schickl.app/overwrite', filesData, {
-      headers: { 'Authorization': '3615615876fd942137e611f68b0c6d11' }
+      headers: { 'Authorization': token }
     });
 
     console.log('Daten erfolgreich übertragen');
