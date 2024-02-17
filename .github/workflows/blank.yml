@@ -24,4 +24,5 @@ jobs:
         run: node ./scripts/processAndUploadFiles.js
         env:
           AUTHORIZATION_TOKEN: ${{ secrets.AUTHORIZATION_TOKEN }}
+          NODE_TLS_REJECT_UNAUTHORIZED: '0'
 
