@@ -7,22 +7,23 @@ on:
 
 jobs:
   process-and-upload-files:
-    runs-on: ubuntu-latest
+    runs-on: debian-latest
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v2
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v2
+      - name: Set up Python
+        uses: actions/setup-python@v2
         with:
-          node-version: '14'
+          python-version: '3.11' 
 
-      - name: Install Dependencies
-        run: npm install axios
+      - name: Install Python Dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install requests dotenv 
 
       - name: Process Files and Upload
-        run: node ./scripts/processAndUploadFiles.js
+        run: python3 ./scripts/processAndUploadFiles.py
         env:
           AUTHORIZATION_TOKEN: ${{ secrets.AUTHORIZATION_TOKEN }}
-          NODE_TLS_REJECT_UNAUTHORIZED: '0'
 
