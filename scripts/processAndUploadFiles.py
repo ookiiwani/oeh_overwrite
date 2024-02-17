@@ -19,7 +19,7 @@ else:
   print(f'- Error: {response.text}')
 
 # DELETE-Anfrage an die API senden
-#response = requests.delete( url, headers = header )
+response = requests.delete( url, headers = header )
 
 for file_path in glob.glob(os.path.join(dir_path, '[a-z][a-z].*')):
   with open(file_path, 'r', encoding='utf-8') as file:
