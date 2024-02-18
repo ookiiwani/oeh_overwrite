@@ -17,6 +17,9 @@ jobs:
         with:
           node-version: '20' 
 
+      - name: Install Node.js Dependencies
+        run: npm install
+
       - name: Process Files and Upload
         run: node ./scripts/processAndUploadFiles.js
         env:
