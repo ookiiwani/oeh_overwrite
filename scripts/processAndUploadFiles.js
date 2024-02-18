@@ -1,10 +1,13 @@
-const fs = require('fs');
-const path = require('path');
-const _ = require('lodash');
-const fetch = require('node-fetch');
-require('dotenv').config();
+// ECMAScript Module (ESM) Syntax
+import fs from 'fs';
+import path from 'path';
+import _ from 'lodash';
+import fetch from 'node-fetch';
+import dotenv from 'dotenv';
 
-const directoryPath = path.join(__dirname, '../overwrite');
+dotenv.config();
+
+const directoryPath = path.join(process.cwd(), 'overwrite'); // Geändert, um __dirname in ESM zu ersetzen
 const result = {};
 
 fs.readdirSync(directoryPath).forEach(file => {
@@ -30,7 +33,6 @@ fs.readdirSync(directoryPath).forEach(file => {
     }
 });
 
-// Hier wird angenommen, dass `oeh.json` der Name der Datei ist, die Sie überschreiben möchten.
 const dataToSend = JSON.stringify({
     filename: 'oeh.json',
     content: JSON.stringify(result)
@@ -43,7 +45,7 @@ fetch('https://api.schickl.app/oeh.schickl.app/overwrite?filename=oeh.json', {
     body: dataToSend,
     headers: {
         'Content-Type': 'application/json',
-        'Authorization': token
+        'Authorization': `Bearer ${token}`
     }
 })
 .then(response => response.json())
