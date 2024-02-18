@@ -39,13 +39,14 @@ const dataToSend = JSON.stringify({
 });
 
 const token = process.env.AUTHORIZATION_TOKEN;
+console.log('token:', token);
 
 fetch('https://api.schickl.app/oeh.schickl.app/overwrite?filename=oeh.json', {
     method: 'PUT',
     body: dataToSend,
     headers: {
         'Content-Type': 'application/json',
-        'Authorization': `Bearer ${token}`
+        'Authorization': token
     }
 })
 .then(response => response.json())
