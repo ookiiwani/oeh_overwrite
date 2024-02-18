@@ -23,14 +23,10 @@ response = requests.delete(url, headers=header)
 
 for file_path in glob.glob(os.path.join(dir_path, '[a-z][a-z].*')):
   filename, file_extension = os.path.splitext(os.path.basename(file_path))
-  if file_extension in ['.md', '.json']:
-    filename_to_send = filename  
-  else:
-    filename_to_send = os.path.basename(file_path)  
   
   with open(file_path, 'r', encoding='utf-8') as file:
     data = {
-      'filename': filename_to_send,
+      'filename': filename,
       'content': file.read()
     }
 
