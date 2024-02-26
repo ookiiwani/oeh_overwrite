@@ -1,1 +1,1 @@
-Willkommen bei Campus for Change (ÖH version)
+Willkommen bei Campus for Change (ÖH Version)
